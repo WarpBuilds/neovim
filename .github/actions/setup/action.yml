@@ -15,11 +15,11 @@ runs:
     - if: ${{ runner.os != 'Windows' }}
       name: Set ulimit
       shell: bash
-      run: ulimit -c unlimited
+      run: sudo ulimit -c unlimited
 
     - if: ${{ runner.os == 'Windows' }}
       run: .github/scripts/env.ps1
-      shell: pwsh
+      shell: sudo pwsh
 
     - name: Install dependencies
       run: ./.github/scripts/install_deps.sh ${{ inputs.install_flags }}
