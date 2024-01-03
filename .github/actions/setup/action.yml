@@ -12,14 +12,14 @@ runs:
       shell: bash
       run: echo "$BIN_DIR" >> $GITHUB_PATH
 
-    - if: ${{ runner.os != 'Windows' }}
-      name: Set ulimit
-      shell: bash
-      run: sudo ulimit -c unlimited
+    # - if: ${{ runner.os != 'Windows' }}
+    #   name: Set ulimit
+    #   shell: bash
+    #   run: sudo ulimit -c unlimited
 
     - if: ${{ runner.os == 'Windows' }}
       run: .github/scripts/env.ps1
-      shell: sudo pwsh
+      shell: pwsh
 
     - name: Install dependencies
       run: ./.github/scripts/install_deps.sh ${{ inputs.install_flags }}
